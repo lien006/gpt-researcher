@@ -3,7 +3,16 @@ services:
   gpt-researcher:
     image: assafelovic/gpt-researcher
     build: ./
-    environment: 
+    environment:
       OPENAI_API_KEY: ${OPENAI_API_KEY}
+      LLM_PROVIDER: ${LLM_PROVIDER:-ChatOpenAI}
+      FAST_LLM_MODEL: ${FAST_LLM_MODEL:-gpt-3.5-turbo-16k}
+      SMART_LLM_MODEL: ${SMART_LLM_MODEL:-gpt-4}
+      FAST_TOKEN_LIMIT: ${FAST_TOKEN_LIMIT:-4000}
+      SMART_TOKEN_LIMIT: ${SMART_TOKEN_LIMIT:-8000}
+      BROWSE_CHUNK_MAX_LENGTH: ${BROWSE_CHUNK_MAX_LENGTH:-8192}
+      TEMPERATURE: ${TEMPERATURE:-1}
+      USE_WEB_BROWSER: ${USE_WEB_BROWSER:-chrome}
+      MEMORY_BACKEND: ${MEMORY_BACKEND:-local}
     ports:
       - 8000:8000
